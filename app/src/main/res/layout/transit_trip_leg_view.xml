@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/transit_origin"
+        layout="@layout/transit_trip_leg_stop_view" />
+
+    <include
+        android:id="@+id/trip_leg_data"
+        layout="@layout/material_list_entry_view" />
+
+    <include
+        android:id="@+id/transit_destination"
+        layout="@layout/transit_trip_leg_stop_view" />
+
+</LinearLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="de.dhbw.mannheim.cwb">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/launcher"
+        android:label="@string/app_name_short"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CalendarWithBenefits"
+        tools:ignore="AllowBackup">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".view.calendar.CalendarActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <data
+                    android:host="com.android.calendar"
+                    android:pathPrefix="/time/"
+                    android:scheme="content" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <data
+                    android:host="com.android.calendar"
+                    android:path="/"
+                    android:scheme="content" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".view.calendar.EventViewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <data
+                    android:host="com.android.calendar"
+                    android:pathPrefix="/events/"
+                    android:scheme="content" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".view.settings.SettingsActivity" />
+    </application>
+
+</manifest>

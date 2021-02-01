@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="calendar">Kalender</string>
+    <string name="settings">Einstellungen</string>
+    <string name="time">Uhrzeit</string>
+    <string name="location">Ort</string>
+    <string name="reminder_method_default">Standard-Erinnerung</string>
+    <string name="reminder_method_alert">Benachrichtigung</string>
+    <string name="reminder_method_email">Erinnerung per Email</string>
+    <string name="reminder_method_sms">Erinnerung per SMS</string>
+    <string name="reminder_method_alarm">Wecker</string>
+    <string name="reminder_time_at_start">Zu Begin des Events</string>
+    <string name="attendee_name_unknown">Ungenannter Teilnehmer</string>
+    <string name="attendee_relationship_organizer">Veranstalter</string>
+    <string name="attendee_relationship_performer">Darsteller</string>
+    <string name="attendee_relationship_speaker">Sprecher</string>
+    <plurals name="reminder_time_minutes">
+        <item quantity="one">%1$d Minute vorher</item>
+        <item quantity="other">%1$d Minuten vorher</item>
+    </plurals>
+    <plurals name="reminder_time_hours">
+        <item quantity="one">%1$d Stunde vorher</item>
+        <item quantity="other">%1$d Stunden vorher</item>
+    </plurals>
+    <string name="route">Route</string>
+    <string name="attendees">Teilnehmer</string>
+    <string name="reminders">Erinnerungen</string>
+    <string name="settings_location_home">Heimatadresse</string>
+    <string name="settings_weather_units">Wettereinheiten</string>
+    <string name="weather_units_imperial">Angloamerikanisches System</string>
+    <string name="weather_units_metric">Metrisches System</string>
+    <string name="error_weather_missing_home_address_title">Keine Adresse</string>
+    <string name="error_weather_missing_home_address_button">Zu den Einstellungen</string>
+    <string name="error_weather_missing_home_address_description">Um das Wetter anzeigen zu können, muss eine Heimatadresse angegeben werden.</string>
+    <string name="preference_not_set">Nicht festgelegt</string>
+    <string name="edit">Bearbeiten</string>
+    <string name="submit">Submit</string>
+    <string name="event_new">Termin erstellen</string>
+    <string name="event_edit">Termin bearbeiten</string>
+    <string name="error_no_activity_found_to_edit">Es konnte keine Anwendung gefunden werden, um den Termin zu bearbeiten.</string>
+    <string name="error_no_activity_found_to_create">Es konnte keine Anwendung gefunden werden, um einen neuen Termin zu erstellen.</string>
+    <string name="route_find">Finde Route</string>
+    <string name="numbered_trip">Fahrt %1$d</string>
+    <string name="error_not_trips_found">Es konnten keine Routen zur gegebenen Zeit zwischen dem Start- und dem Zielort gefunden werden.</string>
+    <string name="trip_origin">Start</string>
+    <string name="trip_destination">Ziel</string>
+    <string name="trip_time_arrival">Ankunft</string>
+    <string name="trip_time_departure">Abfahrt</string>
+    <string name="trip_stop_info_track">Gl. %1$s</string>
+    <string name="alert_message_delete_route">Soll die Route zwischen %1$s und %2$s gelöscht werden?</string>
+</resources>
