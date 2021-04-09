@@ -7,6 +7,7 @@ import android.location.Address
 import android.os.Bundle
 import android.provider.CalendarContract
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.preference.PreferenceManager
@@ -50,7 +51,12 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         binding = MainFragmentBinding.bind(view)
 
         val today = LocalDate.now()
-        binding.content.adapter = YourDayFragmentAdapter(this, today)
+        binding.content.adapter = object : FragmentStateAdapter(childFragmentManager, lifecycle) {
+            override fun getItemCount() = 5
+            override fun createFragment(position: Int) = SingleDayFragment().apply {
+                arguments = bundleOf("date" to today.plusDays(position.toLong()).toString())
+            }
+        }
 
         TabLayoutMediator(binding.dayTabs, binding.content, true, true) { tab, position ->
             val date = today.plusDays(position.toLong())
@@ -91,16 +97,4 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             .unregisterOnSharedPreferenceChangeListener(preferenceListener)
     }
 
-}
-
-private class YourDayFragmentAdapter(
-    fragment: MainFragment,
-    private val today: LocalDate,
-) : FragmentStateAdapter(fragment) {
-    override fun getItemCount() = 5
-    override fun createFragment(position: Int) = SingleDayFragment().apply {
-        arguments = Bundle(1).apply {
-            putString("date", today.plusDays(position.toLong()).toString())
-        }
-    }
 }

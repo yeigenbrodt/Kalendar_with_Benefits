@@ -22,6 +22,8 @@ import androidx.recyclerview.widget.RecyclerView
 import de.dhbw.mannheim.cwb.R
 import de.dhbw.mannheim.cwb.util.formatTemporal
 import de.dhbw.mannheim.cwb.util.formatTemporalRange
+import de.dhbw.mannheim.cwb.util.toInstant
+import de.dhbw.mannheim.cwb.util.toLocalDate
 import de.dhbw.mannheim.cwb.view.calendar.EventViewActivity
 import de.dhbw.mannheim.cwb.view.settings.SettingsActivity
 import de.dhbw.mannheim.cwb.view.weather.SharedWeatherModel
@@ -194,7 +196,7 @@ class SingleDayFragment : Fragment(R.layout.main_single_day_fragment) {
 
         val eventAdapter = entryAdapter.sublist("calendar.events").apply { clear() }
 
-        events.map {
+        events.sortedBy { it.begin.toInstant() }.map {
             it.run {
                 DayEntry(title = title, subtitle = listOfNotNull(
                     if (end != null) formatTemporalRange(begin, end) else formatTemporal(begin),
@@ -259,7 +261,7 @@ private class EventData(
         }
 
         fun Instant.getTemporal(zone: ZoneId, allDay: Boolean): Temporal {
-            return atZone(zone).let { if (allDay) it.toLocalDate() else it }
+            return if (allDay) toLocalDate() else atZone(zone)
         }
 
         contentResolver.query(

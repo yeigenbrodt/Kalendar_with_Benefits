@@ -47,6 +47,7 @@ import de.dhbw.mannheim.cwb.databinding.CalendarCvMonthHeaderBinding
 import de.dhbw.mannheim.cwb.databinding.MaterialCardViewBinding
 import de.dhbw.mannheim.cwb.util.formatTemporal
 import de.dhbw.mannheim.cwb.util.formatTemporalRange
+import de.dhbw.mannheim.cwb.util.toInstant
 import de.dhbw.mannheim.cwb.util.toLocalDate
 import java.time.DayOfWeek
 import java.time.Instant
@@ -155,7 +156,7 @@ class CalendarActivity : FragmentActivity() {
         }
 
         val adapter = EventInstancesAdapter(this, layoutInflater)
-        events.observe(this) { list -> adapter.submitList(list) }
+        events.observe(this) { list -> adapter.submitList(list.sortedBy { it.begin.toInstant() }) }
         binding.eventList.adapter = adapter
 
         obtainStyledAttributes(intArrayOf(R.attr.colorOnPrimary)).run {
@@ -229,7 +230,7 @@ private class InstanceData(
         }
 
         fun Instant.getTemporal(zone: ZoneId, allDay: Boolean): Temporal {
-            return atZone(zone).let { if (allDay) it.toLocalDate() else it }
+            return if (allDay) toLocalDate() else atZone(zone)
         }
 
         contentResolver.query(
