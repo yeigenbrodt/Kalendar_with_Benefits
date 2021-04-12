@@ -807,7 +807,7 @@ private class EventData(contentResolver: ContentResolver, eventId: Long) :
             contentUri, PROJECTION, null, null, null
         )?.apply {
             fun Instant.getTemporal(zone: ZoneId, allDay: Boolean): Temporal {
-                return atZone(zone).let { if (allDay) it.toLocalDate() else it }
+                return if (allDay) toLocalDate() else atZone(zone)
             }
 
             if (moveToFirst()) {
